@@ -23,29 +23,6 @@ fun mergeTwoLists(l1: ListNode?, l2: ListNode?): ListNode? {
             l1Rest      = l1
             l2Rest      = l2.next
         }
-
-        /*
-        while (true) {
-            if ( (l1Rest == null) and (l2Rest == null) ) {
-                break
-            } else if (l1Rest == null) {
-                currentNode!!.next = l2Rest
-                l2Rest             = l2Rest?.next
-            } else if (l2Rest == null){
-                currentNode!!.next = l1Rest
-                l1Rest             = l1Rest?.next
-            } else if (l1Rest.value <= l2Rest.value) {
-                currentNode!!.next = l1Rest
-                l1Rest             = l1Rest.next
-            } else {
-                currentNode!!.next = l2Rest
-                l2Rest             = l2Rest.next
-            }
-            
-            currentNode = currentNode.next
-        }
-        
-        */
         
         while (true) {
             if (l1Rest == null) {
