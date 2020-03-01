@@ -1,35 +1,37 @@
 import ListNode.*
 
 fun swapPairs(head: ListNode?): ListNode? {
-    // Initialization of variables
+    // Pointer to keep track of previous node
+    var pointer: ListNode?     = null
+    // Current node we are processing
     var currentNode: ListNode? = head
-
-    if ( (currentNode == null) or (currentNode.next == null) ) {
-        /*
-            There is only zero or one node. No swapping required.
-        */
+    // head for the new list
+    val newHead: ListNode
+    
+    if ((head == null) or (head?.next == null)) {
+        // Less than equal to one node, return head
         return head
-    } else { // There are at least two nodes, good
-        val newHead: ListNode      = currentNode.next
-
-        while (true) {
-            // Initializing variables
-            val node1: ListNode?   = currentNode
-            val node2: ListNode?   = currentNode.next
-            val nextNode           = currentNode.next?.next
-            
-            // Magic, the swapping part
-            node1.next = nextNode
-            node2.next = node1
-
-            // Updating the variables
-            currentNode = nextNode
-
-            // Break loop condition
-            if ( (currentNode == null) or (currentNode.next == null) ) break
-        }
-
-        return newHead
+    } else {
+        // Else set new head
+        newHead = head!!.next!!
     }
-
+     
+    while (true) {
+        // Do the magic
+        // First check which pair we are on
+        val node1: ListNode    = currentNode!!.next!!
+        val node2: ListNode    = currentNode!!
+        // Swapping the two nodes
+        node2.next   = node1.next
+        node1.next   = node2
+        if (pointer != null) {
+            pointer.next = node1
+        }
+        // Updating
+        pointer      = node2
+        currentNode  = node2.next
+        // Breaking conditions
+        if ((currentNode == null) or (currentNode?.next == null)) break
+    }
+    return newHead
 }
