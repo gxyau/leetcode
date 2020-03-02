@@ -1,11 +1,14 @@
-import java.util.concurrent.atomic.AtomicInteger
-import kotlin.collections.contains as contains1
+import kotlin.math.pow
 
 fun test(str: String) : Int{
     val pattern = Regex("^[\\+\\-]?[1-9]+")
-    val match   = pattern.find(str.trim())?.value
-     
-    return if (match == null) 0 else match.toInt()
+    val match   = pattern.find(str.trim())?.value?.toLong()
+    
+    if ( (match != null) and (match > (2.0).pow(31)) and (match < (2.0).pow(31) -1) ) {
+        return match.toInt()
+    } else {
+        return 0
+    }
 }
 
 
