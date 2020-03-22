@@ -2,7 +2,8 @@ fun intToList(x: Int): MutableList<Int> {
     val mList: MutableList<Int> = mutableListOf<Int>()
     var integer = x
 
-    while (integer % 10  + integer / 10 != 0) {
+
+    while (integer % 10 + integer / 10 != 0) {
         mList.add(integer % 10)
         integer /= 10
     }
@@ -13,12 +14,11 @@ fun intToList(x: Int): MutableList<Int> {
 fun isPalindromicList(palindromeList: MutableList<Int>): Boolean {
     // Declare variable
     var isPalindromic: Boolean = true
-    println(palindromeList)
-    println(isPalindromic)
+
     while (true) {
         if (palindromeList.size <= 1) break // if list has length at most 1, it is true
-        val first: Int = palindromeList[0]
-        val last: Int  = palindromeList[palindromeList.size - 1]
+        val first: Int = palindromeList.removeAt(0)
+        val last: Int  = palindromeList.removeAt(palindromeList.size - 1)
         isPalindromic  = isPalindromic and (first == last)
     }
 
@@ -45,4 +45,5 @@ fun main(){
     println(isPalindrome(3))
     println(isPalindrome(1234))
     println(isPalindrome(1001))
+    println(isPalindrome(10))
 }
