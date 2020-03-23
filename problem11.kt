@@ -1,15 +1,32 @@
 fun maxArea(height: IntArray): Int{
-    val totalElements: Int = height.size
     var maxArea: Int       = 0
+    var i: Int             = 0
+    var j: Int             = height.size - 1
 
     // Only consider outer most bars, and move the shorter one since it is already
     // the maximum area that it could form
+    while (true) {
+        maxArea = maxOf( maxArea, (j - i)*minOf(height[i], height[j]) )
+        // Update
+        if ( height[i] < height[j] ) {
+            i++
+        } else {
+            j--
+        }
+        // Breaking condition
+        if (j <= i) break
+    }
+
+
+    // Brute forcce
+    /*
     for(i  in 0 until totalElements - 1){
-        for(j in i+1 until totalElements) {
+        for(j in i+1 totalElements - 1) {
             println(listOf(maxArea, (j - i)*minOf(height[i], height[j])))
             maxArea = maxOf(maxArea, (j - i)*minOf(height[i], height[j]) )
         }
     }
+    */
 
     return maxArea
 }
