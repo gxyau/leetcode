@@ -1,4 +1,4 @@
-class Solution {
+class SolutionDay1 {
     fun singleNumber(nums: IntArray): Int {
         val possibleNumbers: MutableList<Int> = mutableListOf<Int> ()
 

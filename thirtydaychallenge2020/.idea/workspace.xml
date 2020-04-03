@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f3fd3224-5ac8-4310-aef5-71ee01ec52a6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/SolutionDay2Test.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/day1.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/day1.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/day2.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/day2.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,6 +17,7 @@
       <list>
         <option value="Kotlin Class" />
         <option value="Kotlin File" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -38,7 +42,17 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -62,5 +76,9 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="587" y="311" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1585818996215" />
+    <state x="721" y="229" width="467" height="547" key="org.jetbrains.kotlin.idea.testIntegration.KotlinCreateTestDialog" timestamp="1585825685876">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="721" y="229" width="467" height="547" key="org.jetbrains.kotlin.idea.testIntegration.KotlinCreateTestDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1585825685876" />
   </component>
 </project>
