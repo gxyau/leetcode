@@ -1,23 +1,23 @@
 class MinStack() {
-
-    /** initialize your data structure here. */
-
+    /**
+     * initialize your data structure here.
+     * first is top stack, second is cumulative min
+     **/
+    val stack: MutableList< Pair<Int, Int> > = mutableListOf< Pair<Int, Int> > ()
 
     fun push(x: Int) {
-
+        if(stack.isEmpty()) {
+            stack.add( Pair<Int, Int>(x, x) )
+        } else {
+            stack.add( Pair<Int, Int>(x, minOf(stack.last().second, x)) )
+        }
     }
 
-    fun pop() {
+    fun pop() = stack.removeAt(stack.lastIndex)
 
-    }
+    fun top(): Int = stack.last().first
 
-    fun top(): Int {
-
-    }
-
-    fun getMin(): Int {
-
-    }
+    fun getMin(): Int = stack.last().second
 
 }
 
