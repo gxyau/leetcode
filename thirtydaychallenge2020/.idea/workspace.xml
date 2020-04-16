@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f3fd3224-5ac8-4310-aef5-71ee01ec52a6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/day15.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/day16.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -70,10 +70,14 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="741" y="264" width="428" height="478" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1585809349106" />
-    <state x="565" y="69" key="com.intellij.ide.util.TipDialog" timestamp="1586938452554">
+    <state x="563" y="47" key="com.intellij.ide.util.TipDialog" timestamp="1587024145142">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="565" y="69" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1586938452554" />
+    <state x="563" y="47" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1587024145142" />
+    <state x="622" y="198" width="666" height="609" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1587025979869">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="622" y="198" width="666" height="609" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1587025979869" />
     <state x="517" y="245" width="875" height="590" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1586762019451">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
