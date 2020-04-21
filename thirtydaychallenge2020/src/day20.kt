@@ -1,9 +1,3 @@
-
- class TreeNode(var `val`: Int) {
-     var left: TreeNode? = null
-     var right: TreeNode? = null
- }
-
 class SolutionDay20 {
     tailrec fun buildBST(head: TreeNode, value: Int): Unit {
         if (value > head.`val`) {
