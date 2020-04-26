@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f3fd3224-5ac8-4310-aef5-71ee01ec52a6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/day26.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/day26.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/day26.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +34,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -65,10 +66,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="741" y="264" width="428" height="478" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1585809349106" />
-    <state x="490" y="119" key="SettingsEditor" timestamp="1587131060305">
+    <state x="484" y="53" key="SettingsEditor" timestamp="1587885278278">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="490" y="119" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1587131060305" />
+    <state x="484" y="53" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1587885278278" />
     <state x="574" y="1" key="com.intellij.ide.util.TipDialog" timestamp="1587633231924">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
