@@ -1,5 +1,5 @@
 class FirstUnique(nums: IntArray) {
-    val map: LinkedHashMap<Int, Int> = LinkedHashMap()
+    val map: LinkedHashMap<Int, Boolean> = LinkedHashMap()
 
     init {
         for (num in nums) {
@@ -8,16 +8,23 @@ class FirstUnique(nums: IntArray) {
     }
 
     fun showFirstUnique(): Int {
-        val filtered = map.filterValues { it -> it == 1 }
-        if (filtered.isEmpty()) return -1
-        return filtered.keys.first()
+        if (map.values.first()) return map.keys.first()
+        return -1
     }
 
     fun add(value: Int) {
+        //map.put(value, map.getOrPut(value, {true}) and false)
         if (map.containsKey(value)) {
-            map[value] = map[value]!! + 1
+            map.remove(value)
+            map.put(value, false)
         } else {
-            map.put(value, 1)
+            map.put(value, true)
+            while (true) {
+                if (map.values.first()) break
+                val currentFirst: Int = map.keys.first()
+                map.remove(currentFirst)
+                map.put(currentFirst, false)
+            }
         }
     }
 
