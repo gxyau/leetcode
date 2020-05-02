@@ -1,4 +1,4 @@
-class Solution {
+class SolutionDay1 {
 public:
     int firstBadVersion(int n) {
         int left=0, right=n, mid;
