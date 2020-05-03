@@ -19,11 +19,10 @@ public:
             if (dict.count(symbol)) {
                 stk.push(symbol);
             } else {
-                char top_stack = stk.top();
-                if (symbol != dict[top_stack]) {
+                if (stk.empty() || symbol != dict[stk.top()]) {
                     return false;
-                } else {
-                    stk.pop();
+                } else {    
+                    stk.pop();    
                 }
             }
             ++index;
