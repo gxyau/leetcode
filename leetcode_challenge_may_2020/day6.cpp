@@ -3,7 +3,7 @@ using std::vector;
 using std::cout;
 using std::endl;
 
-class Solution {
+class SolutionDay6 {
 public:
     int majorityElement(vector<int>& nums) {
         int counter = 0;
