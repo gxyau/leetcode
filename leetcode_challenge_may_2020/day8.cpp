@@ -25,7 +25,6 @@ public:
 };
 
 int main() {
-    float x = 1/2;
-    cout << x << endl;
+    // TODO: Implement test
     return 0;
 }
