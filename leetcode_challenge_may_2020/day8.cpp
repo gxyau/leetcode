@@ -4,7 +4,7 @@ using std::cout;
 using std::endl;
 using std::vector;
 
-class Solution {
+class SolutionDay8 {
 public:
     float gradient(vector<int> coord1, vector<int> coord2){
         float numerator   = coord2[1] - coord1[1];
