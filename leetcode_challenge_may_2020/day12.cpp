@@ -1,7 +1,7 @@
 #include<iostream>
 #include<vector>
 using std::vector;
-class Solution {
+class SolutionDay12 {
 public:
     int singleNonDuplicate(vector<int>& nums) {
         int l = 0, r = nums.size() - 1;

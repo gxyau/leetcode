@@ -1,5 +1,5 @@
 #include<iostream>
-class Solution {
+class SolutionDay11 {
 public:
     void checkColour(vector<vector<int>>& image, int x, int y, int newColour, int originalColour) {
         if (x < 0 || x >= image.size() || y < 0 || y >= image[0].size()) return;
