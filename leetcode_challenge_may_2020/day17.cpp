@@ -5,7 +5,7 @@ using std::vector;
 using std::cout;
 using std::endl;
 
-class Solution {
+class SolutionDay17 {
 public:
     vector<int> findAnagrams(string s, string p) {
         vector<int> indices;
