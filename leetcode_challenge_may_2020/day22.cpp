@@ -7,7 +7,7 @@ using std::string;
 using std::unordered_map;
 using std::vector;
 
-class Solution {
+class SolutionDay22 {
 public:
     string frequencySort(string s) {
         // For storing character frequencies
