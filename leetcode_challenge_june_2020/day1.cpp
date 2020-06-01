@@ -12,7 +12,7 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-class Solution {
+class SolutionDay1 {
 public:
     TreeNode* invertTree(TreeNode* root) {
         if (root == nullptr) return root;
