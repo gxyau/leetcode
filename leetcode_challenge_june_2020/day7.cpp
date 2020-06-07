@@ -8,8 +8,15 @@ using std::vector;
 class SolutionDay7 {
 public:
     int change(int amount, vector<int>& coins) {
-        int count = 0;
-        return count;
+        int n = coins.size();
+        vector<int> DP(amount+1, {0});
+        ++DP[0];
+        for (int c : coins) {
+            for (int i = c; i < amount+1; ++i) {
+                DP[i] += DP[i-c];
+            }
+        }
+        return DP[amount];
     }
 };
 
@@ -43,5 +50,7 @@ int main() {
     cout << endl;
     comb = sol.change(10,*coins);
     cout << "Number of combinations for this amount: " << comb << endl;
+    delete coins;
+    coins = nullptr;
     return 0;
 }
