@@ -1,4 +1,4 @@
-// Combination Sum III
+// Problem 216, Combination Sum III
 #include<iostream>
 #include<vector>
 using std::cin;
@@ -8,8 +8,28 @@ using std::vector;
 
 class Solution216 {
 public:
+    void getCombinations(int k, int n, int lowerbound,
+            vector<int> &current, vector<vector<int>> &combinations) {
+        if (n == 0 & current.size() == k) {
+            combinations.push_back(current);
+            return;
+        } else if (n < 0 || current.size() > k) {
+            return;
+        }
+
+        for (int i = lowerbound; i <= 9; ++i) {
+            current.push_back(i);
+            getCombinations(k, n-i, i+1, current, combinations);
+            current.pop_back();
+        }
+    }
+    
     vector<vector<int>> combinationSum3(int k, int n) {
         vector<vector<int>> combinations;
+        vector<int>         current;
+        if (k > 0) {
+            getCombinations(k,n,1,current,combinations);
+        }
         return combinations;
     }
 };
