@@ -16,13 +16,17 @@ public:
         if(n<=1) return nums;
         std::sort(nums.begin(), nums.end());
         
-        // pair.first contains length longest subsequence,
-        // pair.second contains its parent index
-        vector<pair<int, int>> DP(n, pair<int, int> (0,-1));
-        
-        /*
-         * We check the largest number before nums[i] that is divisible by it
+        /* pair.first contains length longest subsequence,
+         * pair.second contains its parent index
          */
+        vector<pair<int, int>> DP(n, pair<int, int> (1,-1));
+        
+        /* We check the number before nums[i] that is divisible by it
+         * When a number is found, we check whether or not the length
+         * is longer. Check everything for j < i otherwise some cases
+         * stops before finding the longest subset.
+         */
+        int max_length = 0, index= 0;
         for (int i = 0; i < n; ++i) {
             int j = i;
             while (--j >= 0) {
@@ -31,12 +35,15 @@ public:
                     DP[i].first = DP[j].first + 1;
                     DP[i].second = j;
                 }
+                if (DP[i].first > max_length) {
+                    max_length = DP[i].first;
+                    index      = i;
+                }
             }
         }
         
         // Return answer
         vector<int> answer;
-        int index = n-1;
         while (true) {
             answer.push_back(nums[index]);
             index = DP[index].second;
