@@ -16,16 +16,8 @@ struct TreeNode {
 class SolutionDay15 {
 public:
     TreeNode* searchBST(TreeNode* root, int val) {
-        if (root == nullptr) {
-            // If nullptr then we cannot find val in tree
-            return nullptr;
-        } else if (val > root->val) {
-            return searchBST(root->right, val);
-        } else if (val < root->val) {
-            return searchBST(root->left, val);
-        }
-        // If none of the above applies then root has value val
-        return root;
+        if (root == nullptr || root->val == val) return root;
+        return (val > root->val) ? searchBST(root->right, val) : searchBST(root->left, val);
     }
 };
 
