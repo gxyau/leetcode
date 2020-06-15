@@ -21,5 +21,19 @@ public:
 };
 
 int main() {
+    SolutionDay15 sol;
+    // Case 1
+    TreeNode *root    = new TreeNode(4);
+    root->left        = new TreeNode(2);
+    root->right       = new TreeNode(7);
+    root->left->left  = new TreeNode(1);
+    root->left->right = new TreeNode(3);
+    TreeNode *answer  = sol.searchBST(root, 2);
+    bool same_subtree = (root->left == answer);
+    cout << "They are the same subtree: " << same_subtree << endl;
+    // Case 2
+    answer       = sol.searchBST(root, 5);
+    bool is_null = (answer == nullptr);
+    cout << "Cannot find subtree: " << is_null << endl;
     return 0;
 }
