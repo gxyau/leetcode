@@ -10,15 +10,9 @@ using std::vector;
 class Solution1238 {
 public:
     vector<int> circularPermutation(int n, int start) {
-        vector<int> perm;
-        int         index;
-        // Get the first index to start
-        for(index =0 ; index<1<<n ; index++){
-            if((index^(index>>1))== start) break;
-        }
-        for(int i = index; i<((1<<n)+index); ++i){
-            int j = i%(1<<n);
-            perm.push_back(j^(j>>1));
+        vector<int> perm(1<<n,0);
+        for(int i = 0; i<1<<n; ++i){
+            perm[i] = i ^ (i>>1) ^ start;
         }
         return perm;
     }
