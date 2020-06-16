@@ -10,21 +10,18 @@ using std::vector;
 class Solution1238 {
 public:
     vector<int> circularPermutation(int n, int start) {
-        vector<int> perm = gray_code(n);
-        while (perm[0] != start) {
-            std::rotate(perm.begin(), perm.begin()+1, perm.end());
+        vector<int> perm;
+        int         index;
+        // Get the first index to start
+        for(index =0 ; index<1<<n ; index++){
+            if((index^(index>>1))== start) break;
+        }
+        for(int i = index; i<((1<<n)+index); ++i){
+            int j = i%(1<<n);
+            perm.push_back(j^(j>>1));
         }
         return perm;
     }
-private:
-   vector<int> gray_code(int n) {
-       vector<int> gray;
-       // Evaluate 1<<n first, then i < (1<<n)
-       for(int i =0; i<1<<n; i++){
-         gray.push_back(i^(i>>1));
-       }
-       return gray;
-   }
 };
 
 int main() {
