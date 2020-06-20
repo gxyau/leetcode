@@ -1,4 +1,5 @@
 // Day 20, Permutation Sequence
+#include<algorithm>
 #include<iostream>
 #include<string>
 using std::cin;
@@ -9,6 +10,11 @@ using std::string;
 class SolutionDay20 {
 public:
     string getPermutation(int n, int k) {
+        string perm = "";
+        int m = n;
+        while (m) perm += (char) (n-(m--)+1) + '0';
+        while (--k) std::next_permutation(perm.begin(), perm.end());
+        return perm;
     }
 };
 
