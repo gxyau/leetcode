@@ -1,20 +1,26 @@
 // Day 22, Single Number II
-#include<iostream>
-#include<vector>
+#include <iostream>
+#include <unordered_set>
+#include <vector>
 using std::cout;
 using std::endl;
+using std::unordered_set;
 using std::vector;
 
 class SolutionDay22 {
 public:
     int singleNumber(vector<int>& nums) {
         // 3 * unique sum is 2 * target more than total sum
-        int sum = 0, unique_sum = 0;
+        long long int sum = 0, unique_sum = 0;
+        unordered_set<int> set;
         for (int x : nums) {
-            unique_sum ^= x;
-            sum        += x;
+            if (!set.count(x)) {
+                set.insert(x);
+                unique_sum += x;
+            }
+            sum += x;
         }
-        return (int) (3*unique_sum - sum)/2;
+        return (long long int) (3*unique_sum - sum)/2;
     }
 };
 
@@ -38,6 +44,13 @@ int main() {
     cout << "The answer is: " << answer << endl;
     // Case 3
     nums   = {1};
+    cout << "The vector is: ";
+    for (int x : nums) cout << x << " ";
+    cout << endl;
+    answer = sol.singleNumber(nums);
+    cout << "The answer is: " << answer << endl;
+    // Case 4
+    nums   = {43,16,45,89,45,-2147483648,45,2147483646,-2147483647,-2147483648,43,2147483647,-2147483646,-2147483648,89,-2147483646,89,-2147483646,-2147483647,2147483646,-2147483647,16,16,2147483646,43};
     cout << "The vector is: ";
     for (int x : nums) cout << x << " ";
     cout << endl;
