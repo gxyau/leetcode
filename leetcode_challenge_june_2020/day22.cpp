@@ -10,6 +10,7 @@ using std::vector;
 class SolutionDay22 {
 public:
     int singleNumber(vector<int>& nums) {
+        /*
         // 3 * unique sum is 2 * target more than total sum
         long long int sum = 0, unique_sum = 0;
         unordered_set<int> set;
@@ -21,6 +22,18 @@ public:
             sum += x;
         }
         return (long long int) (3*unique_sum - sum)/2;
+        */
+        
+        int ones = 0;
+        int twos = 0;
+        
+        for(auto i:nums)
+        {
+            ones = (ones^i) & (~twos);
+            twos = (twos^i) & (~ones);
+        }
+        
+        return ones;
     }
 };
 
