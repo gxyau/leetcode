@@ -2,46 +2,67 @@
 #include<string>
 using std::string;
 
+struct Node {
+    int value = 0, total = 0;
+    bool end = false;
+    Node *children[26] = {nullptr};
+    Node(): value(), total(), end(), children() {};
+    Node(int v): value(v), total(v), end(false), children() {};
+};
+
 class MapSum {
 private:
-    struct Node {
-        int value          = 0;
-        int total          = 0;
-        Node *children[26] = {nullptr};
-    };
+    Node *root = nullptr;
 public:
     /** Initialize your data structure here. */
     MapSum() {
-        Node* root = new Node();
+        root = new Node();
     }
-       
+    
     void insert(string key, int val) {
-        Node* ptr = root;
-        ptr.sum  += val;
+        bool is_new = false;
+        Node* ptr   = root;
+        ptr->total += val;
         // Adding the new value to the prefixes, while moving pointer
         for (char c : key) {
-            ptr         = ptr->children[c - 'a'];
-            ptr->total += val;
+            if (ptr->children[c - 'a'] == nullptr) {
+                ptr->children[c - 'a'] = new Node(val);
+            } else {
+                ptr->children[c - 'a']->total += val;
+            }
+            // Move pointer
+            ptr = ptr->children[c - 'a'];
         }
-        // Keep track of old value
-        const int old = ptr->value;
-        // Set new value of current node
-        ptr->value    = val;
-        // Return pointer to root
-        ptr           = root;
-        // Subtract old value
-        root->value  -= old;
-        for (char c : key) {
-            ptr         = ptr->children[c - 'a'];
-            ptr->total -= old;
+        // Indicates this is end of word
+        if (!ptr->end) {
+            ptr->end = true;
+            is_new   = true;
         }
-        return ptr->total;
+        // If it is not a new node, need to subtract things
+        if (!is_new) {
+            // Keep track of old value
+            const int old = ptr->value;
+            // Set new value of current node
+            ptr->value = val;
+            // Return pointer to root
+            ptr = root;
+            // Subtract old value
+            root->value  -= old;
+            for (char c : key) {
+                // Move the pointer
+                ptr = ptr->children[c - 'a'];
+                // Subtract the value
+                ptr->total -= old;
+            }
+        }
     }
     
     int sum(string prefix) {
         Node *ptr  = root;
         for (char c : prefix) {
+            // Move pointer
             ptr = ptr->children[c - 'a'];
+            // If we get nullptr then no object with such prefix
             if (ptr == nullptr) return 0;
         }
         return ptr->total;
