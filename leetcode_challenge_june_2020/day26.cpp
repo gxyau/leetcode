@@ -12,8 +12,17 @@ struct TreeNode {
 };
 
 class SolutionDay26 {
+private:
+    int total = 0;
+    void tree_sum(TreeNode* root, int prefix) {
+        if (root->left == nullptr && root->right == nullptr) total += prefix;
+        if (root->left != nullptr) tree_sum(root->left, prefix*10 + root->left->val);
+        if (root->right != nullptr) tree_sum(root->right, prefix*10 + root->right->val);
+    }
 public:
     int sumNumbers(TreeNode* root) {
-        
+        if (root == nullptr) return 0;
+        tree_sum(root, root->val);
+        return total;
     }
 };
