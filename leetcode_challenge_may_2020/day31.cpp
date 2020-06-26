@@ -18,8 +18,8 @@ public:
             for (int j = 1; j < n+1; ++j) {
                 // If equal don't need extra action
                 DP[i][j] = std::min({DP[i-1][j] + 1, // Remove
-                        DP[i][j-1] + 1, // Insert
-                        DP[i-1][j-1] + 1 - (word1[i-1] == word2[j-1])}); // Replace
+                DP[i][j-1] + 1, // Insert
+                DP[i-1][j-1] + 1 - (word1[i-1] == word2[j-1])}); // Replace
             }
         }
         // Return answer
