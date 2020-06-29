@@ -13,5 +13,33 @@ public:
 };
 
 int main() {
+    vector<vector<int>> grid;
+    Solution63 sol;
+    int paths;
+    // Test case 1
+    grid = {{0}};
+    paths = sol.uniquePathsWithObstacles(grid);
+    cout << "Number of paths in this grid: " << paths << endl;
+    // Test case 2
+    grid = {{1}};
+    paths = sol.uniquePathsWithObstacles(grid);
+    cout << "Number of paths in this grid: " << paths << endl;
+    // Test case 3
+    grid = {{1,0},{0,0}};
+    paths = sol.uniquePathsWithObstacles(grid);
+    cout << "Number of paths in this grid: " << paths << endl;
+    // Test case 4
+    grid = {{0,0},{0,1}};
+    paths = sol.uniquePathsWithObstacles(grid);
+    cout << "Number of paths in this grid: " << paths << endl;
+    // Test case 5
+    grid = {{0,0,0},{0,1,0},{0,0,0}};
+    paths = sol.uniquePathsWithObstacles(grid);
+    cout << "Number of paths in this grid: " << paths << endl;
+    // Test case 6
+    grid = {{0,1,0},{1,1,0},{0,0,0}};
+    paths = sol.uniquePathsWithObstacles(grid);
+    cout << "Number of paths in this grid: " << paths << endl;
+    // Successfully compiled
     return 0;
 }
