@@ -18,26 +18,68 @@ int main() {
     int paths;
     // Test case 1
     grid = {{0}};
+    cout << "Current grid:" << endl;
+    for (auto vec : grid) {
+        for (auto x : vec) {
+            cout << x << " ";
+        }
+        cout << endl;
+    }
     paths = sol.uniquePathsWithObstacles(grid);
     cout << "Number of paths in this grid: " << paths << endl;
     // Test case 2
     grid = {{1}};
+    cout << "Current grid:" << endl;
+    for (auto vec : grid) {
+        for (auto x : vec) {
+            cout << x << " ";
+        }
+        cout << endl;
+    }
     paths = sol.uniquePathsWithObstacles(grid);
     cout << "Number of paths in this grid: " << paths << endl;
     // Test case 3
     grid = {{1,0},{0,0}};
+    cout << "Current grid:" << endl;
+    for (auto vec : grid) {
+        for (auto x : vec) {
+            cout << x << " ";
+        }
+        cout << endl;
+    }
     paths = sol.uniquePathsWithObstacles(grid);
     cout << "Number of paths in this grid: " << paths << endl;
     // Test case 4
     grid = {{0,0},{0,1}};
+    cout << "Current grid:" << endl;
+    for (auto vec : grid) {
+        for (auto x : vec) {
+            cout << x << " ";
+        }
+        cout << endl;
+    }
     paths = sol.uniquePathsWithObstacles(grid);
     cout << "Number of paths in this grid: " << paths << endl;
     // Test case 5
     grid = {{0,0,0},{0,1,0},{0,0,0}};
+    cout << "Current grid:" << endl;
+    for (auto vec : grid) {
+        for (auto x : vec) {
+            cout << x << " ";
+        }
+        cout << endl;
+    }
     paths = sol.uniquePathsWithObstacles(grid);
     cout << "Number of paths in this grid: " << paths << endl;
     // Test case 6
     grid = {{0,1,0},{1,1,0},{0,0,0}};
+    cout << "Current grid:" << endl;
+    for (auto vec : grid) {
+        for (auto x : vec) {
+            cout << x << " ";
+        }
+        cout << endl;
+    }
     paths = sol.uniquePathsWithObstacles(grid);
     cout << "Number of paths in this grid: " << paths << endl;
     // Successfully compiled
