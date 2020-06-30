@@ -1,56 +1,33 @@
 // Problem 981, Time Map
+#include<algorithm>
 #include<iostream>
 #include<string>
 #include<unordered_map>
 #include<vector>
 using std::cout;
 using std::endl;
-using std::pair;
 using std::string;
-using std::unordered_map;
 using std::vector;
 class TimeMap {
 private:
     // Map Object
-    unordered_map<string, vector<pair<int, string>>> M;
+    std::unordered_map<string, vector<std::pair<int, string>>> M;
 public:
     /** Initialize your data structure here. */
     TimeMap() {}
     
     void set(string key, string value, int timestamp) {
-        cout << "Key, value, timestamp: " << key << ", " << value << ", " << timestamp << endl;
-        if (M.count(key)) { // Key exists
-            M[key].push_back({timestamp, value});
-        } else { // Key does not exists
-            M[key] = vector<pair<int, string>>(1,{timestamp, value});
-        }
-        cout << "Element(s) at this key currently: ";
-        for (auto x : M[key]) cout << "(" << x.first << ", " << x.second << ")";
-        cout << endl;
+        M[key].push_back({timestamp, value});
     }
     
     string get(string key, int timestamp) {
-        // Get all the pairs for this key
-        vector<pair<int,string>> vec = M[key];
-        // If timestamp is smaller than everything else, return empty string
-        if (vec[0].first > timestamp) return "";
-        int l = 0, r = vec.size()-1, m = l + (r-l)/2, elm;
-        while (true) {
-            if (vec[m-1].first <= timestamp && vec[m].first > timestamp) return vec[m].second;
-            elm = vec[m].first;
-            if (elm > timestamp) {
-                r = m-1;
-            } else if (elm < timestamp) {
-                cout << "Case 1, elm, ts: " << elm << ", " << timestamp << endl;
-                cout << "l, m, r: " << l << ", " << m << ", " << r << endl;
-                l = m+1;
-            } else if (elm == timestamp) {
-                cout << "Case 2, elm, ts: " << elm << ", " << timestamp << endl;
-                return vec[m-1].second;
-            }
-            m = l + (r-l)/2;
-        }
-        return "";
+        // If the map does not contain this key or timestamp is smaller than everything else, return empty string
+        if (!M.count(key) || M[key][0].first > timestamp) return "";
+        //Compare function
+        auto comp = []( const std::pair<int, string>& a, const std::pair<int, string>& b) { return a.first < b.first; };
+        // Binary search using lower_bound
+        auto it = upper_bound(M[key].begin(), M[key].end(), std::pair<int, string>({timestamp, ""}), comp);
+        return it == M[key].begin() ? "" : std::prev(it)->second;
     }
 };
 
