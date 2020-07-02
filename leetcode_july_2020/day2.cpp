@@ -1,6 +1,7 @@
 // Day 2, Binary Tree Level Order Traversal II
-#include<queue>
-#include<vector>
+#include <iostream>
+#include <queue>
+#include <vector>
 using std::queue;
 using std::vector;
 
@@ -23,5 +24,23 @@ public:
 };
 
 int main() {
+    SolutionDay2 sol;
+    TreeNode* root;
+    // Test case 1
+    root = new TreeNode(3);
+    root->left  = new TreeNode(9);
+    root->right = new TreeNode(20);
+    root->right->left  = new TreeNode(15);
+    root->right->right = new TreeNode(7);
+    vector<vector<int>> reversed = sol.levelOrderBottom(root);
+    // Printing levels
+    std::cout << "The levels are: ";
+    for (auto vec : reversed) {
+        for (auto x : vec) {
+            std::cout << x << "  ";
+        }
+        std::cout << "\n\n";
+    }
+    // Compile successful
     return 0;
 }
