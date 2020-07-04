@@ -1,7 +1,5 @@
 // Day 4, Ugly Number II
 #include <iostream>
-#include <vector>
-using std::vector;
 
 class SolutionDay4 {
 public:
@@ -11,7 +9,7 @@ public:
             n1          = nth_ugliest * 2;
             n2          = nth_ugliest * 3;
             n3          = nth_ugliest * 5;
-            nth_ugliest = std::min({n1,n2,n3});
+            nth_ugliest = n1 < n2 ? std::min(n1, n3) : std::min(n2,n3);
         }
         return nth_ugliest;
     }
