@@ -5,6 +5,11 @@ class SolutionDay5 {
 public:
     int hammingDistance(int x, int y) {
         int hamming = 0;
+        int bitxor  = x ^ y;
+        while (bitxor) {
+            hamming += bitxor & 1;
+            bitxor >>= 1;
+        }
         return hamming;
     }
 };
