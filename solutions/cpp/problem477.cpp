@@ -7,13 +7,12 @@ class Solution477 {
 public:
     int totalHammingDistance(vector<int>& nums) {
         const int n = nums.size();
-        int hamming = 0, k = 31;
+        int hamming = 0, k = 32;
         int bitsxor;
         while (k--) {
             bitsxor = 0;
             for (int i = 0; i < n; ++i) {
-                bitsxor += nums[i] & 1;
-                nums[i] >>= 1;
+                bitsxor += ((nums[i] & (1 << k)) != 0);
             }
             hamming += bitsxor * (n-bitsxor);
         }
