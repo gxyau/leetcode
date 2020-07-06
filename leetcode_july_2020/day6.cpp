@@ -7,18 +7,21 @@ using std::vector;
 class SolutionDay6 {
 public:
     vector<int> plusOne(vector<int>& digits) {
-        vector<int> ans;
-        int carry = 1, n = digits.size();
-        // Add 1 then build new array
-        for (int i = 0; i < n; ++i) {
-            if (carry) ++digits[n-1-i];
-            carry = (digits[n-1-i] / 10) > 0;
-            digits[n-1-i] %= 10;
-            ans.push_back(digits[n-1-i]);
+        int n = digits.size()-1;
+        while (n >= 0) {
+            if (digits[n] == 9) {
+                digits[n] = 0;
+                n--;
+            } else {
+                ++digits[n];
+                break;
+            }
         }
-        if (carry) ans.push_back(1);
-        std::reverse(ans.begin(), ans.end());
-        return ans;
+        if (n < 0) {
+            digits.push_back(1);
+            std::reverse(digits.begin(), digits.end());
+        }
+        return digits;
     }
 };
 
