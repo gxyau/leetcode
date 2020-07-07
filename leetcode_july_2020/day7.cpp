@@ -6,8 +6,19 @@ using std::vector;
 class SolutionDay7 {
 public:
     int islandPerimeter(vector<vector<int>>& grid) {
-        int perimeter = 0;
-        return perimeter;
+        int m = grid.size(), n = grid[0].size(), total = 0, double_count = 0;
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                if (grid[i][j]) {
+                    ++total;
+                    if (i > 0)   double_count += grid[i-1][j];
+                    if (i < m-1) double_count += grid[i+1][j];
+                    if (j > 0)   double_count += grid[i][j-1];
+                    if (j < n-1) double_count += grid[i][j+1];
+                }
+            }
+        }
+        return 4 * total - double_count;
     }
 };
 
@@ -60,6 +71,17 @@ int main() {
     perimeter = sol.islandPerimeter(grid);
     std::cout << "The perimeter is: " << perimeter << "\n\n";
     // Test case 5
+    grid      = {{0,1,0,1}, {1,1,1,1},{1,0,1,0}};
+    std::cout << "The grid is:\n";
+    for (auto vec : grid) {
+        for (int x : vec) {
+            std::cout << x << "  ";
+        }
+        std::cout << "\n";
+    }
+    perimeter = sol.islandPerimeter(grid);
+    std::cout << "The perimeter is: " << perimeter << "\n\n";
+    // Test case 6
     grid      = {{0,1,0,0}, {1,1,1,0},{0,1,0,0},{1,1,0,0}};
     std::cout << "The grid is:\n";
     for (auto vec : grid) {
