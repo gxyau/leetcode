@@ -36,6 +36,6 @@ public:
     		}
 		    width = std::max(width, int(r - l + 1));
 	    }
-	return width;
+    	return width;
     }
 };
