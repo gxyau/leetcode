@@ -13,38 +13,29 @@ struct TreeNode {
 };
 
 class SolutionDay9 {
-private:
-    int level_width(std::queue<TreeNode*> q) {
-        int width = 0, buffer = 0;
-        TreeNode *ptr;
-        while(!q.empty()) {
-            ptr = q.front();
-            q.pop();
-            if (ptr) {
-                width += buffer + 1;
-            } else {
-                if (width > 0) ++buffer;
-            }
-        }
-        return width;
-    }
 public:
     int widthOfBinaryTree(TreeNode* root) {
         if (root == nullptr) return 0;
-        // Define width
-        int width = 0, max_width = 0, buffer = 0;
-        std::queue<TreeNode*> q1, q2;
-        TreeNode ptr;
-        q1.push(root);
-        do {
-            ptr = q1.front();
-            q1.pop();
-            if (ptr) {
-                width += buffer+1;
-            } else if (width > 0) {
-                ++buffer;
-            }
-        } while (width > 0);
-        return width;
+        std::queue<std::pair<TreeNode*, unsigned long long int>> q;
+        std::pair<TreeNode*, unsigned long long int> tmp;
+	    q.push({root, 0});
+    	int width = 0;
+	    while (q.size() != 0) {
+		    unsigned long long int l = q.front().second, r = 0;
+		    int size = q.size();
+		    while (size-- > 0) {
+			    tmp = q.front();
+			    q.pop();
+			    r = tmp.second;
+		    	if (tmp.first->left) {
+	    			q.push({tmp.first->left, 2 * tmp.second + 1});
+    			}
+			    if (tmp.first->right) {
+		    		q.push({tmp.first->right, 2 * tmp.second + 2});
+	    		}
+    		}
+		    width = std::max(width, int(r - l + 1));
+	    }
+	return width;
     }
 };
