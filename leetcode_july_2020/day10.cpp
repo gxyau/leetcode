@@ -21,22 +21,20 @@ public:
         std::stack<Node*> s;
         Node* ptr = head;
         while (ptr || !s.empty()) {
+            while(!(ptr->child) && ptr->next) ptr = ptr->next;
             if (ptr->child) {
                 s.push(ptr->next);
                 ptr->next       = ptr->child;
                 ptr->child      = nullptr;
                 ptr->next->prev = ptr;
             } else {
-                if (ptr->next) {
-                    ptr = ptr->next;
-                } else if (!s.empty()) {
-                    ptr->next       = s.top();
-                    ptr->next->prev = ptr;
+                if (!s.empty()) {
+                    ptr->next     = s.top();
+                    s.top()->prev = ptr;
                     s.pop();
-                } else {
-                    ptr = ptr->next;
                 }
             }
+            ptr = ptr->next;
         }
         return head;
     }
