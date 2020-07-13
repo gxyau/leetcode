@@ -1,4 +1,5 @@
 // Day 13, Same Tree
+#include <iostream>
 
 // Definition for a binary tree node.
 struct TreeNode {
@@ -13,12 +14,14 @@ struct TreeNode {
  class SolutionDay13 {
 public:
     bool isSameTree(TreeNode* p, TreeNode* q) {
-        if (!p) {
-            return q == p;
-        } else if (!q) {
+        if (p == nullptr && q == nullptr) {
+            return true;
+        } else if (p == nullptr || q == nullptr) {
             return false;
+        } else if (p->val == q->val) {
+            return isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
         }
-        return true;
+        return false;
     }
 };
 
