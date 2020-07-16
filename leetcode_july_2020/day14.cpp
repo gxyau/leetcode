@@ -11,7 +11,6 @@ public:
         hour %= 12;
         angle = hour * 60 * h_deg + minutes * h_deg - minutes * m_deg;
         angle = angle < 0 ? -angle : angle;
-        std::cout << angle << std::endl;
         return std::min(angle, 360 - angle);
     }
 };
