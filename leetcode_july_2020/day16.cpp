@@ -4,9 +4,14 @@
 class SolutionDay16 {
 public:
     double myPow(double x, int n) {
-        double ans = 1, abs_n = std::abs(n);
-        while(abs_n--) {
-            ans *= x;
+        if (x == 0) return 0;
+        // x is not zero
+        double ans = 1;
+        int abs_n = std::abs(n);
+        while(abs_n) {
+            if (abs_n & 1) {ans *= x;}
+            x *= x;
+            abs_n /= 2;
         }
         return n >= 0 ? ans : 1/ans;
     }
