@@ -10,7 +10,7 @@ using std::vector;
 class SolutionDay17 {
 private:
     static bool cmp(pair<int, int> &a, pair<int,int> &b) {
-        return (a.second < b.second);
+        return (a.second > b.second);
     }
 public:
     vector<int> topKFrequent(vector<int>& nums, int k) {
@@ -32,8 +32,9 @@ public:
         std::sort(elms.begin(), elms.end(), cmp);
         // Get top k elements
         vector<int> top_k;
+        const int K = k;
         while (k--) {
-            top_k.push_back(elms[k-1].first);
+            top_k.push_back(elms[K - k].first);
         }
         return top_k;
     }
@@ -49,7 +50,35 @@ int main() {
     ans  = sol.topKFrequent(nums,k);
     std::cout << "The top K element(s) are: ";
     for (auto x : ans) std::cout << x << "  ";
-    std::cout << std::endl;
+    std::cout << "\n\n";
+    // Test case 2
+    nums = {1,1};
+    k    = 1;
+    ans  = sol.topKFrequent(nums,k);
+    std::cout << "The top K element(s) are: ";
+    for (auto x : ans) std::cout << x << "  ";
+    std::cout << "\n\n";
+    // Test case 3
+    nums = {1};
+    k    = 1;
+    ans  = sol.topKFrequent(nums,k);
+    std::cout << "The top K element(s) are: ";
+    for (auto x : ans) std::cout << x << "  ";
+    std::cout << "\n\n";
+    // Test case 4
+    nums = {100,200,200,100,100,10};
+    k    = 2;
+    ans  = sol.topKFrequent(nums,k);
+    std::cout << "The top K element(s) are: ";
+    for (auto x : ans) std::cout << x << "  ";
+    std::cout << "\n\n";
+    // Test case 5
+    nums = {100,200,200,100,100,10,30,200,100,10,200,200,50,50,50,200};
+    k    = 4;
+    ans  = sol.topKFrequent(nums,k);
+    std::cout << "The top K element(s) are: ";
+    for (auto x : ans) std::cout << x << "  ";
+    std::cout << "\n\n";
     // Compile successful
     return 0;
 }
