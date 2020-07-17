@@ -40,6 +40,16 @@ public:
 };
 
 int main() {
+    SolutionDay17 sol;
+    vector<int> nums, ans;
+    int k;
+    // Test case 1
+    nums = {1,1,1,2,2,3};
+    k    = 2;
+    ans  = sol.topKFrequent(nums,k);
+    std::cout << "The top K element(s) are: ";
+    for (auto x : ans) std::cout << x << "  ";
+    std::cout << std::endl;
     // Compile successful
     return 0;
 }
