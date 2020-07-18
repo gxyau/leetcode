@@ -40,7 +40,7 @@ public:
             adj[v[1]].push_back(v[0]);
         }
         // If no cycle detected;
-        return completed(num_courses, top_order, adj) ? top_order : {};
+        return completed(num_courses, top_order, adj) ? top_order : vector<int>(0);
     }
 };
 
