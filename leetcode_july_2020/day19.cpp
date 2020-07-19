@@ -1,4 +1,5 @@
 // Day 19, Add Binary
+#include <bitset>
 #include <iostream>
 #include <string>
 using std::string;
@@ -6,7 +7,18 @@ using std::string;
 class SolutionDay19 {
 public:
     string addBinary(string a, string b) {
-        return "something";
+        unsigned long int sum = 0, num1 = std::stoi(a, nullptr, 2), num2 = std::stoi(b, nullptr, 2);
+        int bit1, bit2, carry = 0, pos = 0, n = std::max(a.size(), b.size());
+        while (n--) {
+            bit1   = num1 & 1; bit2  = num2 & 1;
+            num1 >>= 1; num2 >>= 1;
+            sum   += ((bit1 + bit2 + carry) & 1) << pos++;
+            carry  = (bit1 + bit2 + carry) >> 1;
+        }
+        if (carry) sum += 1 << pos++;
+        string ans = std::bitset<64>(sum).to_string();
+        // Return answer
+        return ans.substr(ans.size()-pos);
     }
 };
 
