@@ -13,6 +13,18 @@ struct ListNode {
 class SolutionDay20 {
 public:
     ListNode* removeElements(ListNode* head, int val) {
+        // Discard head if head has the target value
+        while (head && head->val == val) head = head->next;
+        if (head == nullptr) return nullptr;
+        // Now we are sure that head doesn't have target value or is nullptr
+        ListNode *cur = head;
+        while (cur->next) {
+            if (cur->next->val == val) {
+                cur->next = cur->next->next;
+            } else {
+                cur = cur->next;
+            }
+        }
         return head;
     }
 };
