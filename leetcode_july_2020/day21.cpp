@@ -8,21 +8,22 @@ using std::vector;
 class SolutionDay21 {
 private:
     bool search(int i, int j, vector<vector<char>>& board, string remaining) {
-        if (remaining == '') return true;
+        if (remaining.size() == 1) return remaining[0] == board[i][j];
         int m = board.size(), n = board[0].size();
         bool match = false;
         if (board[i][j] == '0') {
             return false;
-        } else if (board[i][j] == string[0]) {
-            char tmp = string[0];
-            board[i][j] = '0';
-            if (i > 0)   match || search(i-1,j,board, string.substr(1));
-            if (j > 0)   match || search(i,j-1,board, string.substr(1));
-            if (i < n-1) match || search(i+1,j,board, string.substr(1));
-            if (j < n-1) match || search(i,j+1,board, string.substr(1));
-            board[i][j] = tmp;
+        } else if (board[i][j] == remaining[0]) {
+            char tmp    = remaining[0];
+            board[i][j] = '0'; // Setting to 0 indicating this cell has been visited
+            remaining   = string(remaining.begin()+1, remaining.end());
+            if (i > 0)   match = match || search(i-1,j,board, remaining);
+            if (j > 0)   match = match || search(i,j-1,board, remaining);
+            if (i < m-1) match = match || search(i+1,j,board, remaining);
+            if (j < n-1) match = match || search(i,j+1,board, remaining);
+            board[i][j] = tmp; // Returning to original cell for next DFS
         }
-        return false;
+        return match;
     }
 public:
     bool exist(vector<vector<char>>& board, string word) {
