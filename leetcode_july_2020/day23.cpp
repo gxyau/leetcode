@@ -11,10 +11,8 @@ class SolutionDay23 {
             for (int x : nums) {
                 XOR ^= x;
             }
-            std::cout << "XOR: " << XOR << std::endl;
             // Get LSB, exactly one of the two numbers will have this bit
             while (!(XOR & (1 << LSB))) ++LSB;
-            std::cout << "LSB: " << LSB << std::endl;
             // Get first number, and then second number via xor-ing XOR
             for (int x : nums) {
                 if (x & (1 << LSB)) num1 ^= x;
