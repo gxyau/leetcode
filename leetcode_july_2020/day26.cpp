@@ -2,13 +2,11 @@
 #include <iostream>
 
 class SolutionDay26 {
-public:
-    int addDigits(int num) {
-        while(num / 10) {
-            num = (num/10) + (num%10);
+    public:
+        int addDigits(int num) {
+            while(num / 10) num = (num/10) + (num%10);
+            return num;
         }
-        return num;
-    }
 };
 
 int main() {
