@@ -4,15 +4,17 @@
 using std::vector;
 
 class SolutionDay31 {
-public:
-    int climbStairs(int n) {
-        if (n <= 2) return n;
-        vector<int> DP = {1,2};
-        for (int i = 2; i < n; ++i) {
-            DP.push_back(DP[i-1] + DP[i-2]);
+    public:
+        int climbStairs(int n) {
+            if (n <= 2) return n;
+            int k1 = 1, k2 = 2, k;
+            while(n-- > 2) {
+                k  = k1 + k2;
+                k1 = k2;
+                k2 = k;
+            }
+            return k;
         }
-        return DP[DP.size()-1];
-    }
 };
 
 int main() {
