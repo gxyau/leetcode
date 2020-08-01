@@ -20,6 +20,13 @@ class SolutionDay1 {
 };
 
 int main() {
+    SolutionDay1 sol;
+    bool ans;
+    string word;
+    std::cout << "Please enter a string: " << std::endl;
+    std::cin  >> word;
+    ans = sol.detectCapitalUse(word);
+    std::cout << "Proper use of capitals: " << ans << std::endl;
     // Compile successful
     return 0;
 }
