@@ -8,7 +8,7 @@ class SolutionDay1 {
         bool detectCapitalUse(string word) {
             if (word.empty()) return true;
             bool flag = true;
-            while (isupper(word[0])) word.substr(1);
+            while (isupper(word[0])) word = word.substr(1);
             for (char x : word) {
                 if (isupper(x)) {
                     flag = false;
@@ -23,7 +23,7 @@ int main() {
     SolutionDay1 sol;
     bool ans;
     string word;
-    std::cout << "Please enter a string: " << std::endl;
+    std::cout << "Please enter a string: ";
     std::cin  >> word;
     ans = sol.detectCapitalUse(word);
     std::cout << "Proper use of capitals: " << ans << std::endl;
