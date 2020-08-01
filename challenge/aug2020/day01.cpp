@@ -6,7 +6,16 @@ using std::string;
 class SolutionDay1 {
     public:
         bool detectCapitalUse(string word) {
-            return true;
+            if (word.empty()) return true;
+            bool flag = true;
+            while (isupper(word[0])) word.substr(1);
+            for (char x : word) {
+                if (isupper(x)) {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 };
 
