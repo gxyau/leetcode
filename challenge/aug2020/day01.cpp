@@ -8,14 +8,19 @@ class SolutionDay1 {
         bool detectCapitalUse(string word) {
             if (word.empty()) return true;
             bool flag = true;
-            while (isupper(word[0])) word = word.substr(1);
+            int count_upper = 0, count_lower = 0;
+            while (isupper(word[0])) {
+                word = word.substr(1);
+                ++count_upper;
+            }
             for (char x : word) {
                 if (isupper(x)) {
                     flag = false;
                     break;
                 }
+                ++count_lower;
             }
-            return flag;
+            return (count_upper <= 1 ) ? flag : (count_lower == 0);
         }
 };
 
