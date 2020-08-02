@@ -3,24 +3,24 @@
 using std::unordered_set;
 
 class MyHashSet {
+    private:
+        unordered_set<int> S;
     public:
         /** Initialize your data structure here. */
-        MyHashSet() {
-            unordered_set<int> S;
-        }
+        MyHashSet() {}
 
         void add(int key) {
             S.insert(key);
         }
 
         void remove(int key) {
-            S.erase(key)
+            S.erase(key);
         }
 
         /** Returns true if this set contains the specified element */
         bool contains(int key) {
-            unordered_set<int>::iterator it = S.find(key);
-            return it != it.end();
+            auto it = S.find(key);
+            return it != S.end();
         }
 };
 
