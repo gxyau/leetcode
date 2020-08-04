@@ -7,17 +7,8 @@ using std::endl;
 class SolutionDay4 {
     public:
         bool isPowerOfFour(int num) {
-            if (num <= 0) return false;
-            int count = 0, pos = 0, cur = 0;
-            while (num) {
-                ++cur;
-                count += (num & 1);
-                if (count > 1) return false;
-                if (num & 1) pos = cur;
-                num >>= 1;
-            }
-            return count == 1 && (pos & 1);
-        }
+            return num > 0 and (num & (num - 1)) == 0 and (num & 0x55555555);
+       }
 };
 
 int main() {
