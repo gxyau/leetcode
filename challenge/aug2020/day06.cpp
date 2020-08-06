@@ -6,7 +6,13 @@ using std::vector;
 class SolutionDay6 {
     public:
         vector<int> findDuplicates(vector<int>& nums) {
-            return {};
+            int n = nums.size();
+            vector<int> duplicates = {}, counter(n+1,{0});
+            for (int x : nums) {
+                if (counter[x]) duplicates.push_back(x);
+                ++counter[x];
+            }
+            return duplicates;
         }
 };
 
