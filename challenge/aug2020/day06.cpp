@@ -3,7 +3,7 @@
 #include <vector>
 using std::vector;
 
-class Solutionday6 {
+class SolutionDay6 {
     public:
         vector<int> findDuplicates(vector<int>& nums) {
             return {};
@@ -17,7 +17,7 @@ int main() {
     nums = {};
     std::cout << "The vector is: ";
     for (int x : nums) std::cout << x << " ";
-    std::cout << "\n";}
+    std::cout << "\n";
     duplicates = sol.findDuplicates(nums);
     std::cout << "The duplicates are: ";
     for (int x : duplicates) std::cout << x << " ";
@@ -26,7 +26,7 @@ int main() {
     nums = {1};
     std::cout << "The vector is: ";
     for (int x : nums) std::cout << x << " ";
-    std::cout << "\n";}
+    std::cout << "\n";
     duplicates = sol.findDuplicates(nums);
     std::cout << "The duplicates are: ";
     for (int x : duplicates) std::cout << x << " ";
@@ -35,7 +35,7 @@ int main() {
     nums = {1,1};
     std::cout << "The vector is: ";
     for (int x : nums) std::cout << x << " ";
-    std::cout << "\n";}
+    std::cout << "\n";
     duplicates = sol.findDuplicates(nums);
     std::cout << "The duplicates are: ";
     for (int x : duplicates) std::cout << x << " ";
@@ -44,7 +44,7 @@ int main() {
     nums = {4,3,2,7,8,2,3,1};
     std::cout << "The vector is: ";
     for (int x : nums) std::cout << x << " ";
-    std::cout << "\n";}
+    std::cout << "\n";
     duplicates = sol.findDuplicates(nums);
     std::cout << "The duplicates are: ";
     for (int x : duplicates) std::cout << x << " ";
