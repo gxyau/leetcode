@@ -14,7 +14,7 @@ using std::queue;
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-class Solution {
+class SolutionDay8 {
     private:
         void DFS(TreeNode* root, int sum, int &total, int cumulative) {
             if (!root) return;
