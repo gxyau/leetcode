@@ -51,7 +51,7 @@ class SolutionDay9 {
                         --fresh;
                     }
                 }
-                if (!fresh) break;
+                if (!fresh) break; // Otherwise we go through another cycle unnecesarily
             }
             return fresh == 0 ? minutes : -1;
         }
