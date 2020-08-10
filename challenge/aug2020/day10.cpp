@@ -5,9 +5,24 @@
 using std::string;
 
 class SolutionDay10 {
+    private:
+        unsigned long int exp(unsigned long int base, unsigned int exponent) {
+            unsigned long int answer = 1;
+            while (exponent) {
+                if (exponent & 1) answer *= base;
+                exponent >>= 1;
+                base *= base;
+            }
+            return answer;
+        }
     public:
         int titleToNumber(string s) {
-            int column = 0;
+            int column = 0, n = s.size();
+            while (n--) column += exp(26,n); // All columns before this
+            n = s.size(); // Need the size again to go through the string
+            for (char c : s) {
+                column += (c-'A') * exp(26,--n);
+            }
             return column;
         }
 };
