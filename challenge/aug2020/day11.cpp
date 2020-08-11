@@ -8,11 +8,20 @@ class SolutionDay11 {
     public:
         int hIndex(vector<int>& citations) {
             if (citations.empty()) return 0;
-            int index, n = citations.size();
+            int n = citations.size();
+            int l = 0, r = n-1, m;
             // Sort them in order, O(n log n)
-            std::sort(citations.begin(), citations.end());
-            
-            return index;
+            std::sort(citations.begin(), citations.end(), std::greater<int>());
+            // Binary search first m such that citations[m] >= m
+            while (l <= r) {
+                m = l + (r-l)/2;
+                if (citations[m] > m) {
+                    l = m + 1;
+                } else {
+                    r = m - 1;
+                }
+            }
+            return l;
         }
 };
 
