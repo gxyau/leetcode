@@ -11,7 +11,7 @@ class Solution118 {
             for (int nrow = 0; nrow <= k; ++nrow) {
                 row = vector<int>(nrow+1, {0});
                 row[0] = 1;
-                for (int i = 1; i < k+1; ++i) {
+                for (int i = 1; i < nrow+1; ++i) {
                     for (int j = i ; j >= 1; --j) {
                         row[j] += row[j-1];
                     }
@@ -29,8 +29,13 @@ int main() {
     std::cout << "Please enter a number between 0 and 33 (inclusive): ";
     std::cin  >> k;
     pascal = sol.getRow(k);
-    std::cout << "Row " << k << " looks like: ";
-    for (int x : pascal) std::cout << x << " ";
+    std::cout << "The triangle looks like:\n";
+    for (vector<int> row : pascal) {
+        for (int x : row) {
+            std::cout << x << " ";
+        }
+        std::cout << std::endl;
+    }
     std::cout << std::endl;
     // Compile successfully
     return 0;
