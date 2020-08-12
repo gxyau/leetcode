@@ -4,16 +4,14 @@
 using std::vector;
 
 class SolutionDay12 {
-    private:
-        int choose(int n, int k, int num, int denom) {
-            if (k == 0) return (int) num/denom;
-            return choose(n-1,k-1,num*n, denom*k);
-        }
     public:
         vector<int> getRow(int k) {
-            vector<int> pascal;
-            for (int i = 0; i < k+1; ++i) {
-                pascal.push_back(choose(k,i,1,1));
+            vector<int> pascal(k+1, 0);
+            pascal[0] = 1;
+            for (int i = 1; i < k+1; ++i) {
+                for (int j = i ; j >= 1; --j) {
+                    pascal[j] += pascal[j-1];
+                }
             }
             return pascal;
         }
