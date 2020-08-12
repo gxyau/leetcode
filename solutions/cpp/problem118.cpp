@@ -8,7 +8,7 @@ class Solution118 {
         vector<vector<int>> generate(int k) {
             vector<vector<int>> pascal;
             vector<int> row;
-            for (int nrow = 0; nrow <= k; ++nrow) {
+            for (int nrow = 0; nrow < k; ++nrow) {
                 row = vector<int>(nrow+1, {0});
                 row[0] = 1;
                 for (int i = 1; i < nrow+1; ++i) {
