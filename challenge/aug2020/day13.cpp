@@ -7,6 +7,7 @@ using std::vector;
 
 class CombinationIterator {
     private:
+        vector<string> iterators;
         int ind = 0; // Index for the iterator
         
         unsigned int count_bits(int n) {
@@ -19,14 +20,14 @@ class CombinationIterator {
         }
         
         vector<string> combinations(string s, int k) {
-            int n = s.size(), total = (1 << n) - 1, count, index;
-            vector<strings> comb;
+            int n = s.size(), total = (1 << n), count, index;
+            vector<string> comb;
             string str;
             while (total--) {
                 index = n-1;
                 count = 0;
                 str   = "";
-                while (index) {
+                while (index >= 0) {
                     if (total & (1 << index)) {
                         ++count;
                         str += s[n-1-index];
@@ -39,15 +40,15 @@ class CombinationIterator {
         }
     public:
         CombinationIterator(string characters, int combinationLength) {
-            vector<string> iterators = combinations(characters, k);
+            iterators = combinations(characters, combinationLength);
         }
 
         string next() {
-            return iterators[index++];
+            return iterators[ind++];
         }
 
         bool hasNext() {
-            return index < iterators.size();
+            return ind < iterators.size();
         }
 };
 
