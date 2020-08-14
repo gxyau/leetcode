@@ -1,22 +1,19 @@
 // Day 14, Longest Palindrome
 #include <iostream>
 #include <string>
+#include <vector>
 using std::string;
+using std::vector;
 
 class SolutionDay14 {
     public:
-        bool palindrome(string s) {
-            if (s.size() <= 1) return true;
-            int n = s.size();
-            return s[0] == s[n-1] ? palindrome(s.substr(1, n-2)) : false;
-        }
-        
         int longestPalindrome(string s) {
-            string substr;
-            int len = 0;
+            vector<int> count(64,{0});
+            int length = 0;
             for (char c : s) {
+                if (++count[c-'A'] % 2 == 0) length += 2;
             }
-            return len;
+            return s.size() > length ? length + 1 : length;
         }
 };
 
