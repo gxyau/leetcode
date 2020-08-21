@@ -2,12 +2,12 @@
 #include <algorithm>
 #include <iostream>
 #include <vector>
-using std::algorithm;
 using std::vector;
 
 class SolutionDay21 {
     public:
         vector<int> sortArrayByParity(vector<int>& A) {
+            std::sort(A.begin(), A.end(), [](int x, int y) {return x % 2 < y % 2;});
             return A;
         }
 };
