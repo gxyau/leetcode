@@ -1,4 +1,5 @@
 // Day 25, Minimum Cost for Tickets
+#include <algorithm>
 #include <iostream>
 #include <vector>
 using std::vector;
@@ -6,7 +7,19 @@ using std::vector;
 class SolutionDay25 {
     public:
         int mincostTickets(vector<int>& days, vector<int>& costs) {
-            return 0;
+            if (days.size() == 1) return costs[0];
+            vector<int> DP(366,{0});
+            int day_cost, week_cost, month_cost, ptr = 1;
+            for (int day : days) {
+                while (ptr < day) {
+                    DP[ptr++] = DP[ptr-1];
+                }
+                day_cost   = costs[0] + DP[ptr-1];
+                week_cost  = costs[1] + (ptr < 7 ? 0 : DP[ptr-7]);
+                month_cost = costs[2] + (ptr < 30 ? 0 : DP[ptr-30]);
+                DP[ptr++]    = std::min({day_cost, week_cost, month_cost});
+            }
+            return DP[days[days.size()-1]];
         }
 };
 
@@ -19,7 +32,7 @@ int main() {
     std::cout << "Days to travel: ";
     for (int day : days) std::cout << day << " ";
     std::cout << std::endl;
-    costs = {3,15,60};
+    costs = {2,7,15};
     std::cout << "Costs for day-pass, 7-days-pass, 30-days-pass: ";
     for (int cost : costs) std::cout << cost << " ";
     std::cout << std::endl;
