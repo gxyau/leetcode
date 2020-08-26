@@ -13,6 +13,15 @@ class SolutionDay26 {
 };
 
 int main() {
+    SolutionDay26 sol;
+    int n;
+    vector<string> vec;
+    std::cout << "Please enter an integer: ";
+    std::cin  >> n;
+    vec = sol.fizzBuzz(n);
+    std::cout << "FizzBuzz: ";
+    for (string str : vec) std::cout << str << " ";
+    std::cout << std::endl;
     // Compile successful
     return 0;
 }
