@@ -1,14 +1,46 @@
 // Day 30, Largest Component Size by Common Factor
-#include <iostring>
-#include <numeric>
+#include <cmath>
+#include <iostream>
+#include <unordered_map>
 #include <vector>
-using std::gcd;
+using std::sqrt;
 using std::vector;
 
 class Solution {
+    private:
+        vector<int> parent;
+        // Find parent
+        int find (int vertex) {
+            if(parent[vertex]==-1) return vertex;
+            return parent[vertex]=find(parent[vertex]);
+        }
+        // Union
+        bool merge(int u,int v) {
+            int parent_u = find(u), parent_v = find(v);
+            if(parent_u != parent_v) {
+                parent[parent_v] = parent_u;
+                return true;
+            } else {
+                return false;
+            }
+        }
     public:
         int largestComponentSize(vector<int>& A) {
-            return 0;
+            std::unordered_map<int, int> memory;
+            parent = vector<int>(100001,{-1});
+            int maximum = 0;
+            // Creating components
+            for (int a : A) {
+                for (int i = 2; i <= sqrt(a); ++i) {
+                    if (a % i == 0) {
+                        merge(i, a);
+                        merge(a, a/i);
+                    }
+                }
+            }
+            // Finding largest component
+            for (int a : A) maximum = std::max(maximum, ++memory[find(a)]);
+            return maximum;
         }
 };
 
