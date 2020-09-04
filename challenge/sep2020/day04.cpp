@@ -9,14 +9,20 @@ using std::vector;
 class Solution {
     public:
         vector<int> partitionLabels(string S) {
-            vector<int> partitions;
-            int freq[26];
-            for (auto c : S) {
-                if (freq[c-'a']++) {
-                    partitions = {std::accumulate(partitions.begin(), partitions.end(), 0)};
+            vector<int> partitions, last(26,{-1});
+            int index = 0, anchor = 0, block = 0;
+            for (char c : S) last[c-'a'] = index++;
+            std::cout << std::endl;
+            index = 0;
+            for (char c : S) {
+                block = std::max(block, last[c-'a']);
+                if (index == block) {
+                    partitions.push_back(index-anchor+1);
+                    anchor = index+1;
                 }
+                ++index;
             }
-            return {};// partitions;
+            return partitions;
         }
 };
 
