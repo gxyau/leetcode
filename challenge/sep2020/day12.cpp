@@ -4,9 +4,30 @@
 using std::vector;
 
 class Solution {
+    private:
+        vector<vector<int>> combinations;
+        // Backtracking
+        void partitions(int k, int n, int start, vector<int> &current, vector<vector<int>> &combinations) {
+            // Impossible cases
+            if (n < 0 || n > 55  || k < 0|| k > 9) return;
+            // Partitions, base case
+            if (n == 0 && k == 0) {
+                combinations.push_back(current);
+                return;
+            }
+            // Backtracking
+            for (int i = start; i <= 9; ++i) {
+                current.push_back(i);
+                partitions(k-1,n-i,i+1,current,combinations);
+                current.pop_back();
+            }
+        }
     public:
         vector<vector<int>> combinationSum3(int k, int n) {
-            return {};
+            vector<int> current = {};
+            combinations = {};
+            partitions(k,n,1,current,combinations);
+            return combinations;
         }
 };
 
