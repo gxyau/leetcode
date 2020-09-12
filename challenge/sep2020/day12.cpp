@@ -9,7 +9,7 @@ class Solution {
         // Backtracking
         void partitions(int k, int n, int start, vector<int> &current, vector<vector<int>> &combinations) {
             // Impossible cases
-            if (n < 0 || n > 55  || k < 0|| k > 9) return;
+            if (n < 0 || n > 45  || k < 0|| k > 9) return;
             // Partitions, base case
             if (n == 0 && k == 0) {
                 combinations.push_back(current);
