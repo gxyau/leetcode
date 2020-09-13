@@ -20,7 +20,6 @@ class Solution {
             } else {
                 new_interval.push_back(interval1[1]);
             }
-            std::cout << "Interval after merging: [" << new_interval[0] << ", " << new_interval[1] << "]\n";
             return new_interval;
         }
     public:
