@@ -7,8 +7,14 @@ class Solution {
     public:
         int rob(vector<int>& nums) {
             if (nums.empty()) return 0;
-            int sum = 0;
-            return sum;
+            // m1 is maximum until the last house, m2 is up to two houses before
+            int maximum = 0, m1 = 0, m2 = 0;
+            for (auto it = nums.begin(); it != nums.end(); ++it) {
+                maximum = std::max(m1,m2+*it);
+                m2      = m1;
+                m1      = maximum;
+            }
+            return maximum;
         }
 };
 
