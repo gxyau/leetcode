@@ -12,6 +12,14 @@ class Solution {
 };
 
 int main() {
+    Solution sol;
+    string s;
+    int length;
+    // Mini program
+    std::cout << "Please enter a string: ";
+    std::getline(std::cin, s);
+    length = sol.lengthOfLastWord(s);
+    std::cout << "Length of last word is: " << length << std::endl;
     // Compile successful
     return 0;
 }
