@@ -6,27 +6,24 @@ using std::string;
 using std::vector;
 
 class Solution {
-        private:
-        vector<string> tokenizer(string s) {
-            vector<string> tokens;
-            string word = "";
-            for (auto it = s.begin(); it != s.end(); ++it) {
-                if (std::isalnum(*it)) {
-                    word += *it;
-                } else {
-                    if (!word.empty()) tokens.push_back(word);
-                    word = "";
-                }
-            }
-            if (!word.empty()) tokens.push_back(word);
-            return tokens;
-        }
     public:
         int lengthOfLastWord(string s) {
             if (!s.size()) return 0;
-            vector<string> tokens = tokenizer(s);
-            int n = tokens.size();
-            return n > 0 ? tokens[n-1].size() : 0;
+            auto it = s.begin(), jt = s.end()-1;
+            // Remove trailing space
+            while (*it == ' ') ++it;
+            while (*jt == ' ') --jt;
+            // Get length of last word
+            int length = 0;
+            while (it <= jt) {
+                if (!std::isalnum(*it)) {
+                    length = 0;
+                } else {
+                    ++length;
+                }
+                ++it;
+            }
+            return length;
         }
 };
 
