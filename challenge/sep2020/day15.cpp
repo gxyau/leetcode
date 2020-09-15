@@ -1,13 +1,32 @@
 // Length of Last Word
 #include <iostream>
 #include <string>
+#include <vector>
 using std::string;
+using std::vector;
 
 class Solution {
+        private:
+        vector<string> tokenizer(string s) {
+            vector<string> tokens;
+            string word = "";
+            for (auto it = s.begin(); it != s.end(); ++it) {
+                if (std::isalnum(*it)) {
+                    word += *it;
+                } else {
+                    if (!word.empty()) tokens.push_back(word);
+                    word = "";
+                }
+            }
+            if (!word.empty()) tokens.push_back(word);
+            return tokens;
+        }
     public:
         int lengthOfLastWord(string s) {
-            int length = 0;
-            return length;
+            if (!s.size()) return 0;
+            vector<string> tokens = tokenizer(s);
+            int n = tokens.size();
+            return n > 0 ? tokens[n-1].size() : 0;
         }
 };
 
