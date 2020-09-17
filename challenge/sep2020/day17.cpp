@@ -13,6 +13,13 @@ class Solution {
 };
 
 int main() {
+    Solution sol;
+    string instructions, flag;
+    // Mini program
+    std::cout << "Please enter instructions (no space): ";
+    std::cin  >> instructions;
+    flag = sol.isRobotBounded(instructions) ? "Y" : "N";
+    std::cout << "Is the robot bounded? " << flag << std::endl;
     // Compile successful
     return 0;
 }
