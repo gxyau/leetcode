@@ -6,7 +6,18 @@ using std::vector;
 class Solution {
     public:
         vector<int> sequentialDigits(int low, int high) {
-            return {};
+            vector<int> sequence;
+            int difference = 1, current = 1, probe;
+            for (int i = 2; i <= 9; ++i) {
+                difference = difference * 10 + 1;
+                current   += difference;
+                probe      = current;
+                for (int j = i; j < 10; ++j, probe += difference) {
+                    if ((probe >= low) && (probe <= high))
+                        sequence.push_back(probe);
+                }
+            }
+            return sequence;
         }
 };
 
