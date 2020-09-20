@@ -4,129 +4,124 @@
 using std::vector;
 
 class Solution980 {
-private:
-    std::pair<int, int> start = {-1,-1}, end = {-1,-1};
-    vector<vector<char>> boulder;
-    int count_paths(vector<vector<char>>& grid) {
-        int m = grid.size(), n = grid[0].size();
-        std::cout << m << ", " << n << "\n";
-        vector<vector<int>> paths(m, vector<int>(n));
-        paths[0][0] = 1;
-        // First row or first column
-        for (int i = 0; i < m; ++i) paths[i][0] = grid[i][0] == '.' ? paths[i-1][0] : 0;
-        for (int j = 0; j < n; ++j) paths[0][j] = grid[0][j] == '.' ? paths[0][j-1] : 0;
-        // Fill in the rest
-        std::cout << "Printing DP:" << "\n";
-        for (int i = 1; i < m; ++i) {
-            for (int j = 1; j < n; ++j) {
-                paths[i][j] = grid[i][j] == '*' ? 0 : paths[i-1][j] + paths[i][j-1];
-                std::cout << paths[i][j] << "  ";
+    private:
+        int total;
+        // DFS + Backtracking
+        void DFS(vector<vector<int>> &grid, int posx, int posy, int non_obs) {
+            // Constants
+            const int m = grid.size(), n = grid[0].size(), original = grid[posx][posy];
+            // DFS
+            grid[posx][posy] = -1; // Indicates this cell has been visited or blocked
+            if (original == 2 && non_obs == 0) {
+                ++total;
+            } else if (original == 0) {
+                if (posx > 0) DFS(grid, posx-1, posy, non_obs-1);
+                if (posx < m-1) DFS(grid, posx+1, posy, non_obs-1);
+                if (posy > 0) DFS(grid, posx, posy-1, non_obs-1);
+                if (posy < n-1) DFS(grid, posx, posy+1, non_obs-1);
+            } else if (original == 1) {
+                if (posx > 0) DFS(grid, posx-1, posy, non_obs);
+                if (posx < m-1) DFS(grid, posx+1, posy, non_obs);
+                if (posy > 0) DFS(grid, posx, posy-1, non_obs);
+                if (posy < n-1) DFS(grid, posx, posy+1, non_obs);
             }
-            std::cout << "\n\n";
+            // Return to original value
+            grid[posx][posy] = original;
+            return;
         }
-        // Return result
-        return paths[m][n];
-    }
-public:
-    // Resetting start, end, and boulder
-    void reset() {
-        start = {-1,-1};
-        end   = {-1,-1};
-        boulder.clear();
-    }
-    // Solution
-    int uniquePathsIII(vector<vector<int>>& grid) {
-        int m = grid.size(), n = grid[0].size(), ans;
-        if (m * n == 1) return 0;
-        boulder = vector<vector<char>> (m, vector<char>(n));
-        // Getting start and end positions and building boulder
-        for (int i = 0; i < m; ++i) {
-            for (int j = 0; j < n; ++j) {
-                if (grid[i][j] < 0) {
-                    boulder[i][j] = '*';
-                } else {
-                    boulder[i][j] = '.';
-                    if (grid[i][j] == 1) start = {i,j};
-                    if (grid[i][j] == 2) end   = {i,j};
+    public:
+        int uniquePathsIII(vector<vector<int>>& grid) {
+            if (grid.empty() or grid[0].empty()) return 0;
+            const int m = grid.size(), n = grid[0].size();
+            int startx, starty, non_obs = 0;
+            // Find starting point
+            for (int i = 0; i < m; ++i) {
+                for (int j = 0; j < n; ++j) {
+                    if (grid[i][j] == 1) {
+                        startx = i;
+                        starty = j;
+                    } else if (grid[i][j] == 0) {
+                        ++non_obs;
+                    }
                 }
             }
+            total = 0;
+            DFS(grid, startx, starty, non_obs);
+            return total;
         }
-        if (start.first > end.first || start.second > end.second) return 0;
-        vector<vector<char>> subgrid;
-        vector<char> row;
-        for (int i = 0; i < end.first-start.first+1; ++i) {
-            row = boulder[start.first+i];
-            subgrid.push_back(vector<char>(row.begin()+start.second, row.begin()+end.second+1));
-        }
-        std::cout << "Subgrid:" << "\n";
-        for (auto vec : subgrid) {
-            for (auto x : vec) {
-                std::cout << x << "  ";
-            }
-            std::cout << "\n\n";
-        }
-        ans = count_paths(subgrid);
-        return 0;     
-    }
+
 };
 
 int main() {
     Solution980 sol;
     vector<vector<int>> grid;
     int paths;
-    // Test Case 1
-    grid  = {{0,1},{2,0}};
-    std::cout << "Grid: " << "\n";
-    for (auto vec : grid) {
-        for (auto x : vec) {
+    // Test case 1;
+    grid  = {};
+    std::cout << "The grid is:\n";
+    for (auto row : grid) {
+        for (int x : row) {
             std::cout << x << "  ";
         }
         std::cout << "\n\n";
     }
-    paths = sol.uniquePathsIII(grid);
-    std::cout << "Number of unique paths: " << paths << "\n\n";
-    // Test Case 2
-    sol.reset();
+    total = sol.uniquePathsIII(grid);
+    std::cout << "Total unique paths: " << total << std::endl << std::endl;
+    // Test case 2;
+    grid  = {{}, {}, {}};
+    std::cout << "The grid is:\n";
+    for (auto row : grid) {
+        for (int x : row) {
+            std::cout << x << "  ";
+        }
+        std::cout << "\n\n";
+    }
+    total = sol.uniquePathsIII(grid);
+    std::cout << "Total unique paths: " << total << std::endl << std::endl;
+    // Test case 3;
     grid  = {{1,0,0,0},{0,0,0,0},{0,0,2,-1}};
-    // Printing grid
-    std::cout << "Grid: " << "\n";
-    for (auto vec : grid) {
-        for (auto x : vec) {
+    std::cout << "The grid is:\n";
+    for (auto row : grid) {
+        for (int x : row) {
             std::cout << x << "  ";
         }
         std::cout << "\n\n";
     }
-    // Find solution
-    paths = sol.uniquePathsIII(grid);
-    std::cout << "Number of unique paths: " << paths << "\n\n";
-    // Test Case 3
-    sol.reset();
+    total = sol.uniquePathsIII(grid);
+    std::cout << "Total unique paths: " << total << std::endl << std::endl;
+    // Test case 4;
     grid  = {{1,0,0,0},{0,0,0,0},{0,0,0,2}};
-    // Printing grid
-    std::cout << "Grid: " << "\n";
-    for (auto vec : grid) {
-        for (auto x : vec) {
+    std::cout << "The grid is:\n";
+    for (auto row : grid) {
+        for (int x : row) {
             std::cout << x << "  ";
         }
         std::cout << "\n\n";
     }
-    // Find solution
-    paths = sol.uniquePathsIII(grid);
-    std::cout << "Number of unique paths: " << paths << "\n\n";
-    // Test Case 4
-    sol.reset();
+    total = sol.uniquePathsIII(grid);
+    std::cout << "Total unique paths: " << total << std::endl << std::endl;
+    // Test case 5;
+    grid  = {{0,1},{2,0}};
+    std::cout << "The grid is:\n";
+    for (auto row : grid) {
+        for (int x : row) {
+            std::cout << x << "  ";
+        }
+        std::cout << "\n\n";
+    }
+    total = sol.uniquePathsIII(grid);
+    std::cout << "Total unique paths: " << total << std::endl << std::endl;
+    // Test case 6;
     grid  = {{1,0,0,0},{0,-1,0,0},{0,0,0,2}};
-    // Printing grid
-    std::cout << "Grid: " << "\n";
-    for (auto vec : grid) {
-        for (auto x : vec) {
+    std::cout << "The grid is:\n";
+    for (auto row : grid) {
+        for (int x : row) {
             std::cout << x << "  ";
         }
         std::cout << "\n\n";
     }
-    // Find solution
-    paths = sol.uniquePathsIII(grid);
-    std::cout << "Number of unique paths: " << paths << "\n\n";
+    total = sol.uniquePathsIII(grid);
+    std::cout << "Total unique paths: " << total << std::endl << std::endl;
     // Compile successful
     return 0;
 }
